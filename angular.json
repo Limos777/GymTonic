@@ -42,7 +42,8 @@
                   "maximumError": "80kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "outputPath": "dist/gym-app"
             },
             "development": {
               "optimization": false,
