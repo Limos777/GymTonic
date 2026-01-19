@@ -2,7 +2,7 @@
   "version": 2,
   "public": true,
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/(.*)", "destination": "/dist/gym-app/browser/index.html" }
   ],
   "installCommand": "npm install --legacy-peer-deps"
 }
