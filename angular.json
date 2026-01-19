@@ -43,7 +43,7 @@
                 }
               ],
               "outputHashing": "all",
-              "outputPath": "dist/gym-app"
+              "outputPath": "dist/gym-app/broswer"
             },
             "development": {
               "optimization": false,
