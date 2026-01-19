@@ -1,0 +1,151 @@
+<div class="chart-container">
+
+  <div class="chart-header" *ngIf="exercises && exercises.length > 0">
+    <div class="header-main">
+      <div class="title-section">
+        <h2 class="chart-title">Analisi Allenamento</h2>
+        <p class="chart-subtitle">Statistiche Performance</p>
+      </div>
+      
+      <div class="chart-controls" *ngIf="hasData">
+        <button class="control-btn" (click)="toggleChartType()">
+          <span class="control-icon">{{ isDoughnut ? '🥧' : '🍩' }}</span>
+          {{ isDoughnut ? 'MOD. TORTA' : 'MOD. CIAMBELLA' }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="hasData" class="chart-main">
+    
+    <div class="chart-wrapper">
+      <svg [attr.width]="svgSize" [attr.height]="svgSize" class="pie-chart-svg">
+        <g *ngFor="let slice of chartData; let i = index">
+          <path
+            [attr.d]="slice.pathData"
+            [attr.fill]="slice.color"
+            stroke="#1a1a1a" 
+            stroke-width="2"
+            class="chart-slice">
+          </path>
+          <text
+            *ngIf="slice.percentage >= 5"
+            [attr.x]="slice.labelX"
+            [attr.y]="slice.labelY"
+            text-anchor="middle"
+            dominant-baseline="middle"
+            fill="#1a1a1a"
+            font-weight="900"
+            font-size="14"
+            class="percentage-label">
+            {{ slice.percentage }}%
+          </text>
+        </g>
+        
+        <circle *ngIf="isDoughnut" [attr.cx]="center" [attr.cy]="center" [attr.r]="innerRadius - 5" 
+                fill="#ffffff" stroke="#1a1a1a" stroke-width="2"></circle>
+        
+        <text *ngIf="isDoughnut" [attr.x]="center" [attr.y]="center" text-anchor="middle" dominant-baseline="middle" 
+              fill="#1a1a1a" font-weight="900" font-size="28" class="center-total">
+          {{ totalExercises }}
+        </text>
+        <text *ngIf="isDoughnut" [attr.x]="center" [attr.y]="center + 25" text-anchor="middle" dominant-baseline="middle" 
+              fill="#1a1a1a" font-size="12" font-family="monospace" class="center-label">
+          TOTALI
+        </text>
+      </svg>
+    </div>
+    
+    <div class="legend-container">
+      
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-icon">📈</div>
+          <div class="stat-content">
+            <div class="stat-value">{{ totalExercises }}</div>
+            <div class="stat-label">Totali</div>
+          </div>
+        </div>
+        
+        <div class="stat-box">
+          <div class="stat-icon">💪</div>
+          <div class="stat-content">
+            <div class="stat-value">{{ uniqueMuscleGroups }}</div>
+            <div class="stat-label">Gruppi</div>
+          </div>
+        </div>
+        
+        <div class="stat-box">
+          <div class="stat-icon">🏆</div>
+          <div class="stat-content">
+            <div class="stat-value" style="font-size: 1rem">{{ mostTrainedMuscle }}</div>
+            <div class="stat-label">Top Area</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="legend-title">Indice Colori</div>
+      <div class="legend-items">
+        <div *ngFor="let item of chartData" class="legend-item">
+          <span class="legend-color" [style.background]="item.color"></span>
+          <span class="legend-name">{{ item.name }}</span>
+          <span class="legend-value">{{ item.value }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="data-table-container" *ngIf="hasData">
+    <h3 class="table-title">Report Dettagliato</h3>
+    <div class="table-responsive">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Gruppo</th>
+            <th>Q.tà</th>
+            <th>%</th>
+            <th>Barra</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of chartData">
+            <td class="muscle-name">
+              <span class="color-indicator" [style.background]="item.color"></span>
+              {{ item.name }}
+            </td>
+            <td class="exercise-count">
+              <strong>{{ item.value }}</strong>
+            </td>
+            <td class="percentage">
+              <span class="percentage-value">{{ item.percentage }}%</span>
+            </td>
+            <td class="distribution">
+              <div class="bar-container">
+                <div class="bar-fill" 
+                     [style.width]="item.percentage + '%'"
+                     [style.background]="item.color">
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+           <tr>
+             <td colspan="4" class="table-footer">
+               <div class="footer-content">
+                 <span>DATA: {{ currentDate | date:'dd/MM/yyyy' }}</span>
+               </div>
+             </td>
+           </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+
+  <div *ngIf="!hasData" class="empty-state">
+     <div class="empty-icon">📂</div>
+     <h3 class="empty-title">ARCHIVIO VUOTO</h3>
+     <p class="empty-message">Inserire dati per generare il grafico.</p>
+  </div>
+
+</div>

@@ -1,0 +1,52 @@
+<main class="main-content"> <div class="content">
+    
+    <div class="edit-mode editor">
+
+      <div class="editor-header">
+        <h2 class="page-title">Nuova Scheda</h2>
+        <p class="page-subtitle">Configura il tuo allenamento</p>
+      </div>
+
+      <div class="form-section">
+        <label class="input-label">Nome della Scheda</label>
+        <input type="text" 
+               class="main-input" 
+               placeholder="Es. Petto e Tricipiti - Settimana A" 
+               [(ngModel)]="workoutName" />
+      </div>
+
+      <div class="list-section">
+        <h3 class="section-label">Seleziona Esercizi</h3>
+        
+        <div class="exercise-list">
+          <div class="exercise-item" 
+               *ngFor="let exercise of exercises" 
+               [class.selected]="isSelected(exercise)"
+               (click)="toggleExercise(exercise)"> <div class="checkbox-wrapper">
+              <input type="checkbox" 
+                     [checked]="isSelected(exercise)" 
+                     (click)="$event.stopPropagation(); toggleExercise(exercise)" />
+            </div>
+            
+            <div class="item-info">
+              <span class="exercise-name">{{ exercise.name }}</span>
+              <div class="exercise-details small">
+                <span class="tag">{{ exercise.muscleGroup }}</span>
+                <span class="stats">{{ exercise.sets }} x {{ exercise.reps }}</span>
+                <span class="weight" *ngIf="exercise.weightKg > 0">{{ exercise.weightKg }} kg</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="button-group">
+        <button class="btn btn-primary" (click)="saveWorkout()">
+          💾 SALVA SCHEDA
+        </button>
+      </div>
+
+    </div>
+  </div>
+</main>

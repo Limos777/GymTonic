@@ -1,0 +1,142 @@
+/* HEADER & NAVIGATION - Neo-Brutalist Style */
+
+.header {
+  background: #ffffff;
+  padding: 20px 20px;
+  /* Bordo inferiore spesso invece dell'ombra sfumata */
+  border-bottom: 3px solid #1a1a1a; 
+  position: sticky; /* Opzionale: fissa la barra in alto */
+  top: 0;
+  z-index: 100;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* IL LOGO: Ora sembra un adesivo */
+.logo {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #1a1a1a;
+  background: #ffde59; /* Giallo evidenziatore */
+  padding: 5px 15px;
+  border: 2px solid #1a1a1a;
+  box-shadow: 4px 4px 0px #1a1a1a; /* Ombra solida */
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  transition: transform 0.1s;
+}
+
+.logo:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #1a1a1a;
+}
+
+.logo span {
+  color: #1a1a1a; /* Tutto nero per contrasto sul giallo */
+  font-style: italic;
+}
+
+.nav {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* I LINK: Pulsanti rettangolari */
+.nav a {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 0px; /* Niente curve */
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: #1a1a1a;
+  background: #ffffff;
+  border: 2px solid #1a1a1a;
+  transition: all 0.1s ease;
+  text-align: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  box-shadow: 4px 4px 0px #1a1a1a; /* Ombra di default */
+  text-transform: uppercase;
+}
+
+/* Hover: Si "preme" il pulsante riducendo l'ombra */
+.nav a:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #1a1a1a;
+  background: #f0f0f0;
+}
+
+/* Active: Diventa Viola (colore primario del css precedente) */
+.nav a.active,
+button.active {
+  background: #5b54fa;
+  color: #ffffff;
+  border-color: #1a1a1a;
+  box-shadow: 2px 2px 0px #1a1a1a; /* Sembra già premuto */
+  transform: translate(2px, 2px);
+}
+
+button.active {
+  /* Assicura che i bottoni attivi abbiano lo stesso stile dei link */
+  border: 2px solid #1a1a1a;
+  padding: 10px 20px;
+  border-radius: 0px;
+  font-weight: 700;
+  cursor: pointer;
+  box-sizing: border-box;
+  text-transform: uppercase;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .header-content {
+    flex-direction: column;
+    align-items: stretch; /* Occupa tutta la larghezza */
+  }
+
+  .nav {
+    width: 100%;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .nav a,
+  button.active {
+    width: 100%;
+    text-align: center;
+    /* Su mobile rimuoviamo un po' di ombra laterale per estetica */
+    box-shadow: 4px 4px 0px #1a1a1a; 
+  }
+  
+  .logo {
+      align-self: flex-start; /* Il logo resta a sinistra */
+      margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    padding: 15px;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+  }
+
+  .nav a,
+  button.active {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+}

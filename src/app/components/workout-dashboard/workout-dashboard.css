@@ -1,0 +1,96 @@
+/* Sfondo a quadretti come nell'immagine */
+.main {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background-color: #f0f0f0;
+  background-image: 
+    linear-gradient(#e0e0e0 1px, transparent 1px),
+    linear-gradient(90deg, #e0e0e0 1px, transparent 1px);
+  background-size: 20px 20px;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+.exercise-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Card con bordo spesso e ombra netta */
+.exercise-card {
+  background: white;
+  border: 3px solid #000;
+  box-shadow: 8px 8px 0px 0px #000;
+  padding: 20px;
+  transition: all 0.2s ease;
+}
+
+.exercise-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 10px 10px 0px 0px #000;
+}
+
+/* Titolo della scheda */
+.card-header h2 {
+  margin: 0 0 15px 0;
+  font-size: 1.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.card-body p {
+  font-weight: bold;
+  border-bottom: 2px dashed #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+/* Lista esercizi */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 12px;
+  padding-left: 10px;
+  border-left: 4px solid #6366f1; /* Colore viola come i tuoi bottoni */
+}
+
+.exercise-name {
+  font-weight: 700;
+  color: #000;
+}
+
+.exercise-details {
+  display: block;
+  font-size: 0.9rem;
+  color: #6366f1; /* Viola */
+  font-weight: 600;
+}
+
+/* Bottone Elimina in stile Neo-Brutalism */
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.btn-danger {
+  background-color: #ff5c5c; /* Rosso dell'immagine */
+  color: white;
+  border: 3px solid #000;
+  padding: 10px 25px;
+  font-weight: 800;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 4px 4px 0px 0px #000;
+  transition: all 0.1s;
+}
+
+.btn-danger:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px 0px #000;
+}

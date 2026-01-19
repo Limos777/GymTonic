@@ -1,0 +1,271 @@
+/* --- EDITOR: STILE NEO-BRUTALIST / POP --- */
+
+/* 1. CONTENITORE PRINCIPALE */
+.editor {
+  background: #ffffff;
+  padding: 40px;
+  border: 3px solid #1a1a1a; /* Bordo spesso */
+  border-radius: 0px; /* Niente curve */
+  box-shadow: 12px 12px 0px #1a1a1a; /* Ombra gigante solida */
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Decorazione opzionale: Finto nastro adesivo in alto */
+.editor::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 120px;
+  height: 35px;
+  background: rgba(255, 222, 89, 0.6); /* Giallo semi-trasparente */
+  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  pointer-events: none;
+}
+
+/* 2. HEADER INTERNO */
+.editor-header {
+  text-align: center;
+  margin-bottom: 40px;
+  border-bottom: 3px solid #1a1a1a;
+  padding-bottom: 20px;
+}
+
+.page-title {
+  display: inline-block; /* Per adattarsi al testo */
+  background: #ffde59; /* Giallo Evidenziatore */
+  color: #1a1a1a;
+  font-size: 2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  padding: 5px 20px;
+  border: 2px solid #1a1a1a;
+  box-shadow: 4px 4px 0px #1a1a1a;
+  margin-bottom: 10px;
+  transform: rotate(-1deg);
+}
+
+.page-subtitle {
+  font-family: 'Courier New', monospace;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* 3. INPUT NOME SCHEDA */
+.form-section {
+  margin-bottom: 30px;
+}
+
+.input-label {
+  display: block;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  color: #1a1a1a;
+  font-size: 0.9rem;
+}
+
+.main-input {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #1a1a1a;
+  border-radius: 0px;
+  background: #f4f4f4; /* Grigio carta */
+  color: #1a1a1a;
+  font-family: 'Courier New', monospace;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: all 0.1s ease;
+}
+
+.main-input:focus {
+  outline: none;
+  background: #ffffff;
+  box-shadow: 5px 5px 0px #1a1a1a; /* Scatta in fuori */
+  transform: translate(-2px, -2px);
+  border-color: #1a1a1a;
+}
+
+/* 4. LISTA ESERCIZI */
+.list-section {
+  margin-bottom: 30px;
+}
+
+.section-label {
+  font-size: 1.2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  border-left: 5px solid #ff4757; /* Accento rosso laterale */
+  padding-left: 10px;
+  line-height: 1;
+}
+
+.exercise-list {
+  border: 3px solid #1a1a1a; /* Bordo contenitore lista */
+  background: #ffffff;
+  max-height: 450px;
+  overflow-y: auto;
+}
+
+/* Scrollbar Brutalista */
+.exercise-list::-webkit-scrollbar {
+  width: 12px;
+  border-left: 2px solid #1a1a1a;
+  background: #f4f4f4;
+}
+.exercise-list::-webkit-scrollbar-thumb {
+  background: #1a1a1a;
+  border: 2px solid #f4f4f4;
+}
+
+/* Item Lista */
+.exercise-item {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 2px solid #1a1a1a;
+  transition: all 0.1s;
+  cursor: pointer;
+  background: #fff;
+}
+
+.exercise-item:last-child {
+  border-bottom: none;
+}
+
+/* Hover Item */
+.exercise-item:hover {
+  background: #e3f2fd; /* Azzurro Pop */
+  padding-left: 20px; /* Piccolo movimento a destra */
+}
+
+/* Item Selezionato */
+.exercise-item.selected {
+  background: #ffde59; /* Giallo quando selezionato */
+}
+
+.exercise-item.selected .exercise-name {
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+}
+
+/* Checkbox Wrapper */
+.checkbox-wrapper {
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+  width: 24px;
+  height: 24px;
+  accent-color: #1a1a1a; /* Checkbox nera */
+  border: 2px solid #1a1a1a;
+  cursor: pointer;
+}
+
+/* Info Testuali */
+.item-info {
+  flex: 1;
+}
+
+.exercise-name {
+  font-weight: 800;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  display: block;
+}
+
+.exercise-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 5px;
+}
+
+/* TAGS (Dettagli) */
+.tag {
+  background: #1a1a1a;
+  color: #ffffff;
+  padding: 2px 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.stats {
+  background: #ffffff;
+  border: 1px solid #1a1a1a;
+  padding: 2px 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: 'Courier New', monospace;
+}
+
+.weight {
+  background: #ff4757; /* Rosso */
+  color: white;
+  padding: 2px 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid #1a1a1a;
+}
+
+/* 5. BOTTONE SALVA */
+.button-group {
+  margin-top: 30px;
+  text-align: right;
+  border-top: 3px dashed #1a1a1a; /* Linea di strappo */
+  padding-top: 20px;
+}
+
+.btn-primary {
+  background: #4ade80; /* Verde Acido */
+  color: #1a1a1a;
+  padding: 15px 30px;
+  font-size: 1rem;
+  box-shadow: 6px 6px 0px #1a1a1a;
+}
+
+.btn-primary:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0px #1a1a1a;
+}
+
+.btn-primary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #1a1a1a;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .editor {
+    padding: 20px;
+    box-shadow: 6px 6px 0px #1a1a1a;
+  }
+  
+  .page-title {
+    font-size: 1.5rem;
+  }
+  
+  .exercise-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .checkbox-wrapper {
+    margin-bottom: 10px;
+  }
+  
+  .btn-primary {
+    width: 100%;
+  }
+}
